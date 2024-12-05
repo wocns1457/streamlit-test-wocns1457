@@ -34,7 +34,7 @@ input_data = None
 
 # Streamlit 앱 인터페이스
 st.set_page_config(layout="wide")
-st.title("이 제목 바꿔야함.")
+st.title("이 제목 바꿔야함...")
 
 #sidebar
 with st.sidebar:
