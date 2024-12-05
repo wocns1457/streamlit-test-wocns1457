@@ -137,9 +137,8 @@ if input_data:
 
         for line in res1:
             if line:
-                event_data = line.decode('utf-8')
-                event_data = event_data.replace("data: ", "")
-
+                event_data = line.decode('utf-8').replace("data: ", "")
+                print(event_data)
                 import json
                 event = json.loads(event_data)
                 # event = eval(event_data)
