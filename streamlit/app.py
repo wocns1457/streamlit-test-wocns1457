@@ -14,7 +14,7 @@ gpu_server_ip = st.secrets["GPU_SERVER_IP"]
 
 # download video
 def download_files(server_ip, file_name, save_dir):
-    url = server_ip + file_name 
+    url = server_ip + '/' + file_name 
     save_path = os.path.join(save_dir, file_name) 
 
     with requests.get(url, stream=True) as r:
