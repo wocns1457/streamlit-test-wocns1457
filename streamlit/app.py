@@ -132,7 +132,7 @@ if input_data:
         spinner_text = '서버에 요청 중...'
         
         with col2, st.spinner(spinner_text):
-            response = requests.post(gpu_server_ip+'/predict_video', files=files, data=data, stream=True)
+            response = requests.post(gpu_server_ip+'/process_request', files=files, data=data, stream=True)
             res1, res2 = tee(response.iter_lines())
 
         for line in res1:
