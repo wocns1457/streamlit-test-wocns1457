@@ -139,6 +139,7 @@ if input_data:
             if line:
                 event_data = line.decode('utf-8').replace("data: ", "")
                 print(event_data)
+                st.write(event_data)
                 import json
                 event = json.loads(event_data)
                 # event = eval(event_data)
