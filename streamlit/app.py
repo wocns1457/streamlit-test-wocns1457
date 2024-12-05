@@ -99,7 +99,7 @@ if input_data:
         prompt = st.text_area('Write your prompt', 
                               'example..\n'
                               'he wearing black shirt...',
-                               height=2)
+                               height=68)
         button = st.button('Run Model', use_container_width=True)
 
     # Flask API에 이미지 전송
