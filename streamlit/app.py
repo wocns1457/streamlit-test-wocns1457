@@ -30,10 +30,10 @@ video_files = ["sample1.mp4", "sample2.mp4", "sample3.mp4"]
 if not os.path.exists(sample_dir):
     os.makedirs(sample_dir)
     
-for file_name in video_files:
-    local_path = os.path.join(sample_dir, file_name)
-    if not os.path.exists(local_path):
-        download_files(server_ip, file_name, sample_dir)
+# for file_name in video_files:
+#     local_path = os.path.join(sample_dir, file_name)
+#     if not os.path.exists(local_path):
+#         download_files(server_ip, file_name, sample_dir)
       
 input_data = None
 
