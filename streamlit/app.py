@@ -30,16 +30,11 @@ video_files = ["sample1.mp4", "sample2.mp4", "sample3.mp4"]
 if not os.path.exists(sample_dir):
     os.makedirs(sample_dir)
     
-# for file_name in video_files:
-#     local_path = os.path.join(sample_dir, file_name)
-#     if not os.path.exists(local_path):
-#         download_files(server_ip, file_name, sample_dir)
-      
 input_data = None
 
 # Streamlit 앱 인터페이스
 st.set_page_config(layout="wide")
-st.title("Image Classification with Flask and Streamlit")
+st.title("이 제목 바꿔야함.")
 
 #sidebar
 with st.sidebar:
@@ -73,12 +68,14 @@ if use_sample == 'Yes':
     col1.subheader('')
     col1.subheader(file_name)
     video_path = os.path.join(sample_dir, file_name)
+    if not os.path.exists(video_path):
+        download_files(server_ip, file_name, sample_dir)
     input_data = col1.video(video_path)
     file_type = 'video'
     col1.warning("영상이 재생되지 않는 경우, 플레이어가 지원하지 않는 코덱을 사용하고 있을 것입니다.")
 
 elif use_sample == 'No':
-    uploaded_file = col1.file_uploader("Choose an image...", 
+    uploaded_file = col1.file_uploader("Choose an data...", 
                                        type=['jpg', 'jpeg', 'png', 'mp4', 'avi', 'mov', 'wmv'])
     file_name = uploaded_file.name if uploaded_file is not None else None
     file_type = uploaded_file.type.split('/')[0] if uploaded_file is not None else None
