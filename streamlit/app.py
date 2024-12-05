@@ -138,11 +138,7 @@ if input_data:
         for line in res1:
             if line:
                 event_data = line.decode('utf-8').replace("data: ", "")
-                print(event_data)
-                st.write(event_data)
-                import json
-                event = json.loads(event_data)
-                # event = eval(event_data)
+                event = eval(event_data)
                 
                 if 'error' in event:
                     spinner_text = event['error']
