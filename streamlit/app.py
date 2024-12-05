@@ -139,7 +139,7 @@ if input_data:
             if line:
                 event_data = line.decode('utf-8')
                 event_data = event_data.replace("data: ", "")
-                 event = eval(event_data)
+                event = eval(event_data)
                 
                 if 'error' in event:
                     spinner_text = event['error']
