@@ -136,7 +136,7 @@ if input_data:
             res1, res2 = tee(response.iter_lines())
 
         for line in res1:
-            if line: 
+            if line:
                 event = eval(line.decode('utf-8').replace("data: ", ""))
                 # event = eval(event_data)
                 
