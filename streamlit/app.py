@@ -15,11 +15,11 @@ gpu_server_ip = st.secrets["GPU_SERVER_IP"]
 # download video
 def download_files(server_ip, file_name, save_dir):
     url = server_ip + file_name 
-    local_path = os.path.join(save_dir, file_name) 
+    save_path = os.path.join(save_dir, file_name) 
 
     with requests.get(url, stream=True) as r:
         r.raise_for_status() 
-        with open(local_path, 'wb') as f:
+        with open(save_path, 'wb') as f:
             for chunk in r.iter_content(chunk_size=8192):  # 8KB씩 다운로드
                 if chunk:
                     f.write(chunk)
