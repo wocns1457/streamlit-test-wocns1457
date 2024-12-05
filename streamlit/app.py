@@ -137,8 +137,9 @@ if input_data:
 
         for line in res1:
             if line:
-                event = eval(line.decode('utf-8').replace("data: ", ""))
-                # event = eval(event_data)
+                event_data = line.decode('utf-8')
+                event_data = event_data.replace("data: ", "")
+                event = eval(event_data)
                 
                 if 'error' in event:
                     spinner_text = event['error']
