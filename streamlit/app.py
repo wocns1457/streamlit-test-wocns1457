@@ -9,8 +9,8 @@ from itertools import tee
 from PIL import Image
 
 
-server_ip = st.secrets["SERVER_IP"]
-gpu_server_ip = st.secrets["GPU_SERVER_IP"]
+SERVER_IP = st.secrets["SERVER_IP"]
+GPU_SERVER_IP = st.secrets["GPU_SERVER_IP"]
 
 # download video
 def download_files(server_ip, file_name, save_dir):
@@ -69,7 +69,7 @@ if use_sample == 'Yes':
     col1.subheader(file_name)
     video_path = os.path.join(sample_dir, file_name)
     if not os.path.exists(video_path):
-        download_files(server_ip, file_name, sample_dir)
+        download_files(SERVER_IP, file_name, sample_dir)
     input_data = col1.video(video_path)
     file_type = 'video'
     col1.warning("영상이 재생되지 않는 경우, 플레이어가 지원하지 않는 코덱을 사용하고 있을 것입니다.")
@@ -129,7 +129,7 @@ if input_data:
         spinner_text = '서버에 요청 중...'
         
         with col2, st.spinner(spinner_text):
-            response = requests.post(gpu_server_ip+'/process_request', files=files, data=data, stream=True)
+            response = requests.post(GPU_SERVER_IP+'/process_request', files=files, data=data, stream=True)
             res1, res2 = tee(response.iter_lines())
 
         for line in res1:
@@ -155,6 +155,7 @@ if input_data:
                                     break
 
                 if 'result' in event:
+                    num_top_k = num_top_k if num_top_k == len(event['result']) else len(event['result'])
                     for i in range(0, num_top_k, 2):
                         _, col1, _, col2, _ = st.columns([0.2, 1, 0.2, 1, 0.2], gap='small')
                         column = [col1, col2]
