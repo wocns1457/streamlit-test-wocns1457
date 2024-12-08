@@ -25,7 +25,7 @@ def download_files(server_ip, file_name, save_dir):
                     f.write(chunk)
 
 sample_dir = './sample'
-video_files = ["sample1.mp4", "sample2.mp4", "sample3.mp4"]
+video_file_list = ["sample1.mp4", "sample2.mp4", "sample3.mp4"]
 
 if not os.path.exists(sample_dir):
     os.makedirs(sample_dir)
@@ -47,13 +47,12 @@ with st.sidebar:
                      ).replace('*', '')
 
     if use_sample=='Yes':
-        file_name = st.selectbox("Choose a sample video", 
-                        (['sample1.mp4', 'sample2.mp4' ,'sample3.mp4']))
+        file_name = st.selectbox("Choose a sample video", (video_file_list))
+        
     st.subheader('')
     sampling_rate = st.selectbox("Set the video sampling rate", 
                         ([i for i in range(30, 0, -1)]))
     st.subheader('')
-  
     num_top_k = st.selectbox("Set the num of top_k", 
                         ([i for i in range(1, 11)]))
     st.subheader('')
