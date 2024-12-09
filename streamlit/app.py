@@ -28,7 +28,7 @@ sample_dir = './sample'
 video_file_list = ['sample1.mp4', 'sample2.mp4', 'sample3.mp4', 'sample4.mp4']
 video_caption_dict =  {'sample1.mp4': 'Woman with long hair wearing pink short sleeves, white long pants, and black shoes.', 
                        'sample2.mp4': 'A man wearing black long sleeves, white long pants, and blue shoes.', 
-                       'sample3.mp4': 'A woman with short hair dressed in a black dress and black shoes., 
+                       'sample3.mp4': 'A woman with short hair dressed in a black dress and black shoes.', 
                        'sample4.mp4': 'A man wearing red and white striped short sleeves, brown long pants, and black shoes.'}
 
 if not os.path.exists(sample_dir):
