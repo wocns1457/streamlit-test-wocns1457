@@ -97,7 +97,7 @@ if input_data:
         st.subheader('')
         st.subheader('')
         prompt_example = video_caption_dict[file_name] if file_name in video_caption_dict else ''
-        prompt_example = video_caption_dict.get(file_name', '')
+        prompt_example = video_caption_dict.get(file_name, '')
 
         prompt = st.text_area('Write your prompt', 
                               prompt_example, 
