@@ -94,7 +94,7 @@ if input_data:
         st.subheader('')
         prompt = st.text_area('Write your prompt', 
                               'example..\n \
-                              'he wearing black shirt...',
+                               he wearing black shirt...',
                                height=68)
         button = st.button('Run Model', use_container_width=True)
 
