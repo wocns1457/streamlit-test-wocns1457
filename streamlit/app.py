@@ -137,10 +137,10 @@ if input_data:
             response = requests.post(GPU_SERVER_IP+'/process_request', files=files, data=data, stream=True)
             res1, res2 = tee(response.iter_lines())
 
-        for line in res1:
-            if line:
-                event_data = line.decode('utf-8').replace("data: ", "")
-                event = eval(event_data)
+        for event in res1:
+            if event:
+                event = event.decode('utf-8').replace("data: ", "")
+                event = eval(event)
                 
                 if 'error' in event:
                     spinner_text = event['error']
@@ -151,12 +151,15 @@ if input_data:
                         with col2, st.spinner(f"상태: {spinner_text}"):
                             while True:
                                 try:
-                                    line_ = next(res2)
-                                    if line_ and 'status' in str(line_):
-                                        event_= eval(line_.decode('utf-8').replace("data: ", ""))
+                                    event_ = next(res2)
+                                    if not event_:
+                                        continue
+                                    event_ = event_.decode('utf-8').replace("data: ", "")
+                                    if 'status' in event_:
+                                        event_= eval(event_)
                                         if event_['status'] == status_list[status_list.index(spinner_text) + 1]:
                                             break
-                                except:
+                                except StopIteration:
                                     break
 
                 if 'result' in event:
