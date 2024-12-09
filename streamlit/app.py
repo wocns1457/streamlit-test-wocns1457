@@ -25,7 +25,11 @@ def download_files(server_ip, file_name, save_dir):
                     f.write(chunk)
 
 sample_dir = './sample'
-video_file_list = ["sample1.mp4", "sample2.mp4", "sample3.mp4"]
+video_file_list = ['sample1.mp4', 'sample2.mp4', 'sample3.mp4', 'sample4.mp4']
+video_caption_dict =  {'sample1.mp4': 'Woman with long hair wearing pink short sleeves, white long pants, and black shoes.', 
+                       'sample2.mp4': 'A man wearing black long sleeves, white long pants, and blue shoes.', 
+                       'sample3.mp4': 'A woman with short hair dressed in a black dress and black shoes., 
+                       'sample4.mp4': 'A man wearing red and white striped short sleeves, brown long pants, and black shoes.'}
 
 if not os.path.exists(sample_dir):
     os.makedirs(sample_dir)
@@ -33,7 +37,7 @@ if not os.path.exists(sample_dir):
 input_data = None
 
 # Streamlit 앱 인터페이스
-st.set_page_config(layout="wide")
+st.set_page_config(layout='wide')
 st.title("이 제목 바꿔야함...")
 
 #sidebar
@@ -92,9 +96,10 @@ if input_data:
     with col2:
         st.subheader('')
         st.subheader('')
+        prompt_example = video_caption_dict[file_name] if file_name in video_caption_dict else ''
         prompt = st.text_area('Write your prompt', 
-                              'example..\n he wearing black shirt...',
-                               height=68)
+                              prompt_example, 
+                              height=68)
         button = st.button('Run Model', use_container_width=True)
 
     # Flask API에 이미지 전송
