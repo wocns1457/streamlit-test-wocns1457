@@ -38,7 +38,7 @@ input_data = None
 
 # Streamlit 앱 인터페이스
 st.set_page_config(layout='wide')
-st.title("Blip Based Caption Guided CCTV Frame Retrieval")
+st.title("BLIP Based Caption Guided CCTV Frame Retrieval")
 
 #sidebar
 with st.sidebar:
