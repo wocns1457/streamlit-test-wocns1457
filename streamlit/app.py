@@ -38,7 +38,7 @@ input_data = None
 
 # Streamlit 앱 인터페이스
 st.set_page_config(layout='wide')
-st.title("이 제목 바꿔야함...")
+st.title("Blip Based Caption Guided CCTV Frame Retrieval")
 
 #sidebar
 with st.sidebar:
@@ -87,7 +87,7 @@ elif use_sample == 'No':
         if file_type == 'image':
             num_top_k = 1
             sampling_rate = 1
-            input_data = st.image(uploaded_file, caption='Uploaded Image.', use_column_width=True)
+            input_data = st.image(uploaded_file, caption='Uploaded Image.', use_container_width=True)
         elif file_type == 'video':
             input_data = st.video(uploaded_file)
             st.warning("영상이 재생되지 않는 경우, 플레이어가 지원하지 않는 코덱을 사용하고 있을 것입니다.")
@@ -184,7 +184,7 @@ if input_data:
                                 caption = f'Top{index+1} similarity: {similarity}, time: {minutes}분 {seconds:.2f}초 \
                                             \n{caption}'
                                 
-                                column[j].image(img, use_column_width=True)
+                                column[j].image(img, use_container_width=True)
                                 column[j].write(caption)
                             
                 if event.get('status') == 'completed':
