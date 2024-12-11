@@ -45,7 +45,7 @@ with st.sidebar:
     st.title('***Configuration***')
     st.subheader('')
 
-    use_sample = st.radio("**Use sample data?**", 
+    use_sample = st.radio("**Use sample video?**", 
                      ["**No**", "**Yes**"],
                      captions=["", "비디오만 적용."]
                      ).replace('*', '')
@@ -147,20 +147,20 @@ if input_data:
                     col2.error(spinner_text)                        
                         
                 if 'status' in event and event['status'] != 'completed':
-                        spinner_text = status_list[status_list.index(event['status']) + 1]  
-                        with col2, st.spinner(f"상태: {spinner_text}"):
-                            while True:
-                                try:
-                                    event_ = next(res2)
-                                    if not event_:
-                                        continue
-                                    event_ = event_.decode('utf-8').replace("data: ", "")
-                                    if 'status' in event_:
-                                        event_= eval(event_)
-                                        if event_['status'] == status_list[status_list.index(spinner_text) + 1]:
-                                            break
-                                except StopIteration:
-                                    break
+                    spinner_text = status_list[status_list.index(event['status']) + 1]  
+                    with col2, st.spinner(f"상태: {spinner_text}"):
+                        while True:
+                            try:
+                                event_ = next(res2)
+                                if not event_:
+                                    continue
+                                event_ = event_.decode('utf-8').replace("data: ", "")
+                                if 'status' in event_:
+                                    event_= eval(event_)
+                                    if event_['status'] == status_list[status_list.index(spinner_text) + 1]:
+                                        break
+                            except StopIteration:
+                                break
 
                 if 'result' in event:
                     num_top_k = num_top_k if num_top_k == len(event['result']) else len(event['result'])
